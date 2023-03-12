@@ -32,10 +32,19 @@ public class BoardServiceTest {
 //        
 //    }
 	/* 게시판 목록 테스트 */
+//    @Test
+//    public void testGetList() {
+//        
+//        service.getList().forEach(board -> log.info("" + board));        
+//        
+//    }
+    /*게시판 조회*/
     @Test
-    public void testGetList() {
+    public void testGETPage() {
         
-        service.getList().forEach(board -> log.info("" + board));        
+        int bno = 8;
+        
+        log.info("" + service.getDetail(bno));
         
     }
 }

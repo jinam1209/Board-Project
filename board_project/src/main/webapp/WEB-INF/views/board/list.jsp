@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <jsp:include page="../common/header.jsp" />
 <jsp:include page="../common/nav.jsp" />
 
@@ -23,10 +24,11 @@
   		 	 <c:forEach items="${list }" var="bvo">
     		  <tr>
      		   <td>${bvo.bno }</td>
+     		   <td><a href="/board/detail?bno=${bvo.bno }">${bvo.title }</a></td>
      		   <td>${bvo.writer }</td>
      		   <td>${bvo.content }</td>
-     		   <td>${bvo.regdate }</td>
-     		   <td>${bvo.moddate }</td>
+     		   <td><fmt:formatDate pattern="yyyy.MM.dd" value="${bvo.regdate}"/></td>
+     		   <td><fmt:formatDate pattern="yyyy.MM.dd" value="${bvo.moddate}"/></td>
     		  </tr>
     	 	 </c:forEach>
    		 	</tbody>
@@ -41,7 +43,27 @@
     		</tbody>
     	</c:otherwise>
     </c:choose>
-    
   </table>
-
+<script>
+    $(document).ready(function(){
+    	let result = '<c:out value="${result}"/>';
+        
+        checkAlert(result);
+        
+        function checkAlert(result){
+            
+            if(result === ''){
+                return;
+            }
+            
+            if(result === "regist success"){
+            	console.log("여기");
+                alert("게시글 등록이 완료되었습니다.");
+            }
+            
+        } 
+ 
+    });
+ 
+</script>
 <jsp:include page="../common/footer.jsp" />
