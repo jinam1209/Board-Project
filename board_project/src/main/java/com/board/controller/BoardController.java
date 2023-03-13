@@ -56,9 +56,29 @@ public class BoardController {
 	
 	/* 게시판 조회 */
     @GetMapping("/detail")
-    public void boardGetDetailGET(int bno, Model model) {
+    public void boardGetDetailPage(int bno, Model model) {
         
         model.addAttribute("bvo", boardService.getDetail(bno));
+        
+    }
+    
+    /* 게시판 수정 페이지 이동 */
+    @GetMapping("/modify")
+    public void boardModifyPage(int bno, Model model) {
+        
+        model.addAttribute("bvo", boardService.getDetail(bno));
+        
+    }
+    
+    /* 페이지 수정 */
+    @PostMapping("/modify")
+    public String boardModifyPOST(BoardVO board, RedirectAttributes rttr) {
+        
+        boardService.modify(board);
+        
+        rttr.addFlashAttribute("result", "modify success");
+        
+        return "redirect:/board/list";
         
     }
 }

@@ -15,12 +15,12 @@ import com.board.model.BoardVO;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("file:src/main/webapp/WEB-INF/spring/root-context.xml")
 public class BoardMapperTest {
- private static final Logger log = LoggerFactory.getLogger(BoardMapperTest.class);
-     
-     @Autowired
-     private BoardMapper mapper;
- 
-	 /* 게시글 등록 테스트 */
+	private static final Logger log = LoggerFactory.getLogger(BoardMapperTest.class);
+
+	@Autowired
+	private BoardMapper mapper;
+
+	/* 게시글 등록 테스트 */
 //     @Test
 //     public void testRegist() {
 //         
@@ -33,12 +33,12 @@ public class BoardMapperTest {
 //         mapper.regist(vo);
 //         
 //     }
-     
-     /* 게시판 목록 테스트 */
-     @Test
-     public void testGetList() {
-         
-         List list = mapper.getList();
+
+	/* 게시판 목록 테스트 */
+	@Test
+	public void testGetList() {
+
+		List list = mapper.getList();
 //        /* 일반적 for문 */
 //         for(int i = 0; i < list.size();i++) {
 //             log.info("" + list.get(i));
@@ -48,21 +48,35 @@ public class BoardMapperTest {
 //         for(Object a : list) {
 //             log.info("" + a);
 //         }
-         
-        /* foreach문 & 람다식 */
+
+		/* foreach문 & 람다식 */
 //       list.forEach(board -> log.info("" + board));
-         
-     }
-     
-     /* 게시판 조회 */
-     @Test
-    public void testGetPage() {
-        
-        /* 실제 존재하는 페이지 */
-        int bno = 8;
-        
-        log.info("" + mapper.getDetail(bno));
-        
-    }
- 
+
+	}
+
+	/* 게시판 조회 */
+	@Test
+	public void testGetPage() {
+
+		/* 실제 존재하는 페이지 */
+		int bno = 8;
+
+		log.info("" + mapper.getDetail(bno));
+
+	}
+
+	/* 게시판 수정 */
+	@Test
+	public void testModify() {
+
+		BoardVO board = new BoardVO();
+		board.setBno(8);
+		board.setTitle("수정 제목");
+		board.setContent("수정 내용");
+
+		int result = mapper.modify(board);
+		log.info("result : " + result);
+
+	}
+
 }
