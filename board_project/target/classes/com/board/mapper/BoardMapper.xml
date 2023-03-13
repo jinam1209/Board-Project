@@ -23,4 +23,8 @@
     <update id="modify">
     	update board set title = #{title}, content = #{content}, moddate = sysdate where bno = #{bno}
     </update>
+    
+    <delete id="delete">
+    	delete from board where bno = #{bno}
+    </delete>
   </mapper>

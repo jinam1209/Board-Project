@@ -19,25 +19,27 @@ public class BoardServiceTest {
 	private BoardService service;
 
 	/* 게시판 등록 테스트 */
-//    @Test
-//    public void testEnroll() {
-//        
-//        BoardVO vo = new BoardVO();
-//        
-//        vo.setTitle("service test");
-//        vo.setContent("service test");
-//        vo.setWriter("service test");
-//        
-//        service.regist(vo);
-//        
-//    }
+	@Test
+	public void testEnroll() {
+
+		BoardVO vo = new BoardVO();
+
+		vo.setTitle("service test");
+		vo.setContent("service test");
+		vo.setWriter("service test");
+
+		service.regist(vo);
+
+	}
+
 	/* 게시판 목록 테스트 */
-//    @Test
-//    public void testGetList() {
-//        
-//        service.getList().forEach(board -> log.info("" + board));        
-//        
-//    }
+	@Test
+	public void testGetList() {
+
+		service.getList().forEach(board -> log.info("" + board));
+
+	}
+
 	/* 게시판 조회 */
 	@Test
 	public void testGETPage() {
@@ -58,6 +60,15 @@ public class BoardServiceTest {
 		board.setContent("수정 내용");
 
 		int result = service.modify(board);
+		log.info("result : " + result);
+
+	}
+
+	/* 게시판 삭제 */
+	@Test
+	public void testDelete() {
+
+		int result = service.delete(3);
 		log.info("result : " + result);
 
 	}

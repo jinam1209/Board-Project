@@ -61,6 +61,9 @@
             if(result === "modify success"){
                 alert("게시글 수정이 완료되었습니다.");
             }
+            if(result === "delete success"){
+                alert("게시글 삭제가 완료되었습니다.");
+            }
             
         } 
  

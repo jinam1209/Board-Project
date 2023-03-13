@@ -31,6 +31,5 @@
     <input type="text" class="form-control" readonly="readonly" id="moddate" name="moddate" value='<fmt:formatDate pattern="yyyy/MM/dd" value="${bvo.moddate}"/>'>
   </div>
   <a href="/board/modify?bno=${bvo.bno }" class="btn btn-outline-primary" id="modBtn">수정</a>
-  <button type="submit" class="btn btn-outline-danger" id="delBtn">삭제</button>
   <a href="/board/list" class="btn btn-outline-success float-right">목록으로</a>
 <jsp:include page="../common/footer.jsp" />

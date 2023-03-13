@@ -34,7 +34,7 @@ public class BoardController {
 	
 	/* 게시판 등록 페이지 이동 */
 	@GetMapping("/regist")
-	// => @RequestMapping(value="enroll", method=RequestMethod.GET)
+	// => @RequestMapping(value="regist", method=RequestMethod.GET)
 	public void boardRegistPage() {
 
 		log.info("게시판 등록 페이지");
@@ -70,7 +70,7 @@ public class BoardController {
         
     }
     
-    /* 페이지 수정 */
+    /* 게시판 수정 */
     @PostMapping("/modify")
     public String boardModifyPOST(BoardVO board, RedirectAttributes rttr) {
         
@@ -80,5 +80,16 @@ public class BoardController {
         
         return "redirect:/board/list";
         
+    }
+    
+    /* 게시판 삭제 */
+    @PostMapping("/delete")
+    public String boardDelete(int bno, RedirectAttributes rttr) {
+        
+        boardService.delete(bno);
+        
+        rttr.addFlashAttribute("result", "delete success");
+        
+        return "redirect:/board/list";
     }
 }

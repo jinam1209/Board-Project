@@ -6,7 +6,7 @@
 <jsp:include page="../common/nav.jsp" />
 
 <h1>${bvo.title }</h1>
-	<form action="/board/modify" method="post">
+	<form action="/board/modify" method="post" id="form">
 	  <div class="form-group">
 	    <label for="bno">번호</label>
 	    <input type="text" class="form-control" readonly="readonly" id="bno" name="bno" value="${bvo.bno }"> 
@@ -31,8 +31,18 @@
 	    <label for="moddate">수정일</label>
 	    <input type="text" class="form-control" readonly="readonly" id="moddate" name="moddate" value='<fmt:formatDate pattern="yyyy/MM/dd" value="${bvo.moddate}"/>'>
 	  </div>
-	  <button type="submit" class="btn btn-outline-primary" id="modBtn">수정</button>
-	  <a type="" class="btn btn-outline-danger" id="delBtn">삭제</a>
+	  <button type="submit" class="btn btn-outline-primary" id="modify_btn">수정</button>
+	  <a class="btn btn-outline-danger" id="delete_btn">삭제</a>
 	  <a href="/board/list" class="btn btn-outline-success float-right">목록으로</a>
 	</form>
+	
+<script>
+	/* 삭제 버튼 */
+	$("#delete_btn").on("click", function(e){
+	    $("#form").attr("action", "/board/delete");
+	    $("#form").attr("method", "post");
+	    $("#form").submit();
+	});
+</script>
+
 <jsp:include page="../common/footer.jsp" />

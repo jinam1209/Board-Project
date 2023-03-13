@@ -21,36 +21,36 @@ public class BoardMapperTest {
 	private BoardMapper mapper;
 
 	/* 게시글 등록 테스트 */
-//     @Test
-//     public void testRegist() {
-//         
-//         BoardVO vo = new BoardVO();
-//         
-//         vo.setTitle("mapper test");
-//         vo.setContent("mapper test");
-//         vo.setWriter("mapper test");
-//         
-//         mapper.regist(vo);
-//         
-//     }
+	@Test
+	public void testRegist() {
+
+		BoardVO vo = new BoardVO();
+
+		vo.setTitle("mapper test");
+		vo.setContent("mapper test");
+		vo.setWriter("mapper test");
+
+		mapper.regist(vo);
+
+	}
 
 	/* 게시판 목록 테스트 */
 	@Test
 	public void testGetList() {
 
 		List list = mapper.getList();
-//        /* 일반적 for문 */
-//         for(int i = 0; i < list.size();i++) {
-//             log.info("" + list.get(i));
-//         }
-//         
-//        /* foreach문(향상된 for문) */
-//         for(Object a : list) {
-//             log.info("" + a);
-//         }
+		/* 일반적 for문 */
+		for (int i = 0; i < list.size(); i++) {
+			log.info("" + list.get(i));
+		}
+
+		/* foreach문(향상된 for문) */
+		for (Object a : list) {
+			log.info("" + a);
+		}
 
 		/* foreach문 & 람다식 */
-//       list.forEach(board -> log.info("" + board));
+		list.forEach(board -> log.info("" + board));
 
 	}
 
@@ -75,6 +75,15 @@ public class BoardMapperTest {
 		board.setContent("수정 내용");
 
 		int result = mapper.modify(board);
+		log.info("result : " + result);
+
+	}
+
+	/* 게시판 삭제 */
+	@Test
+	public void testDelete() {
+
+		int result = mapper.delete(2);
 		log.info("result : " + result);
 
 	}
