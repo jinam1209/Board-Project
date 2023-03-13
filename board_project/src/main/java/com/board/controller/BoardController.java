@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.board.model.BoardVO;
+import com.board.model.PageMakerDTO;
+import com.board.model.PageVO;
 import com.board.service.BoardService;
 
 @Controller
@@ -21,16 +23,29 @@ public class BoardController {
 	@Autowired
 	private BoardService boardService;
 	
-	/* 게시판 목록 페이지 이동 */
-	@GetMapping("/list")
-	// => @RequestMapping(value="list", method=RequestMethod.GET)
-	public void boardListPage(Model model) {
-
-		log.info("게시판 목록 페이지");
-		
-		model.addAttribute("list", boardService.getList());
-
-	}
+//	/* 게시판 목록 페이지 이동 (페이징 X) */
+//	@GetMapping("/list")
+//	// => @RequestMapping(value="list", method=RequestMethod.GET)
+//	public void boardListPage(Model model) {
+//
+//		log.info("게시판 목록 페이지(페이징 X)");
+//		
+//		model.addAttribute("list", boardService.getList());
+//
+//	}
+	
+    /* 게시판 목록 페이지 접속(페이징 O) */
+    @GetMapping("/list")
+    public void boardListPage(Model model, PageVO page) {
+        
+        log.info("게시판 목록 페이지(페이징 O)");
+        
+        model.addAttribute("list", boardService.getListPaging(page));
+        
+        int total = boardService.getTotal();
+        PageMakerDTO pageMaker = new PageMakerDTO(page, total);
+        model.addAttribute("pageMaker", pageMaker);
+    }
 	
 	/* 게시판 등록 페이지 이동 */
 	@GetMapping("/regist")

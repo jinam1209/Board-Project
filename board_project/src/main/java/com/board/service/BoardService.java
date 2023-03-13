@@ -3,6 +3,7 @@ package com.board.service;
 import java.util.List;
 
 import com.board.model.BoardVO;
+import com.board.model.PageVO;
 
 public interface BoardService {
 	
@@ -12,6 +13,9 @@ public interface BoardService {
 	// 게시판 목록
 	public List<BoardVO> getList();
 	
+	// 게시판 목록(페이징 적용)
+	public List<BoardVO> getListPaging(PageVO page);
+	
 	// 게시판 조회
 	public BoardVO getDetail(int bno);
 	
@@ -20,4 +24,7 @@ public interface BoardService {
 	
 	// 게시판 삭제
 	public int delete(int bno);
+	
+	// 게시글 총 개수
+	public int getTotal();
 }

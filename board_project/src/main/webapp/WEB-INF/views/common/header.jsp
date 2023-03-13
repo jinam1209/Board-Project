@@ -15,5 +15,5 @@
 <body>
 
 <div class="jumbotron text-center" style="margin-bottom:0">
-  <h1><a href="/board/list">Board Project</a></h1>
+  <h1>Board Project</h1>
 </div>

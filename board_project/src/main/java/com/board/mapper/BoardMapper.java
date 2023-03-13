@@ -3,6 +3,7 @@ package com.board.mapper;
 import java.util.List;
 
 import com.board.model.BoardVO;
+import com.board.model.PageVO;
 
 public interface BoardMapper {
 	
@@ -21,4 +22,9 @@ public interface BoardMapper {
 	// 게시판 삭제
 	public int delete(int bno);
 	
+	// 게시판 목록(페이징 적용)
+	public List<BoardVO> getListPaging(PageVO page);
+	
+	// 게시글 총 개수
+	public int getTotal();
 }

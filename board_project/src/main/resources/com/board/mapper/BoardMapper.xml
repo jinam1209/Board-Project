@@ -14,6 +14,21 @@
         select * from board
     </select>
     
+    <!-- 게시판 목록(페이징) -->
+    <select id="getListPaging" resultType="com.board.model.BoardVO">
+    <![CDATA[
+        select bno, title, content, writer, regdate, moddate from(
+             select /*+INDEX_DESC(board pk_board) */ rownum  as rn, bno, title, content, writer, regdate, moddate
+             from board where rownum <= #{pageNum} * #{amount}) 
+        where rn > (#{pageNum} -1) * #{amount}
+    
+    ]]>
+    </select>
+    
+    <!-- 게시글 총 개수 -->
+    <select id="getTotal" resultType="int">
+    	select count(*) from board
+    </select>
     <!-- 게시판 조회 -->
     <select id="getDetail" resultType="com.board.model.BoardVO">
     	select * from board where bno = #{bno}
